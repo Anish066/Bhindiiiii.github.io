@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      overflow-x: hidden;
+    }
+
+    .section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 30px 25px 40px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      margin: 10px 0 15px;
+      color: #e6396f;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .names { font-weight: 600; color: #e6396f; }
+
+    .btns { display: flex; gap: 15px; justify-content: center; }
+
+    button {
+      border: none;
+      padding: 12px 22px;
+      font-size: 15px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .yes { background: #e6396f; color: #fff; }
+    .no { background: #ddd; color: #555; }
+
+    .hidden { display: none; }
+
+    /* Floating hearts */
+    .hearts span {
+      position: fixed;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    .scroll-hint {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #e6396f;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    .accordion { text-align: left; margin-top: 30px; }
+    .acc-item { margin-bottom: 12px; }
+    .acc-btn {
+      width: 100%;
+      background: #ffe3ec;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #e6396f;
+      text-align: left;
+    }
+    .acc-content {
+      display: none;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    /* Meme gallery */
+    .meme {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .meme img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    .caption {
+      font-size: 13px;
+      color: #555;
+      font-style: italic;
+    }
+
+    .music-btn {
+      margin-top: 15px;
+      background: #e6396f;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hearts"></div>
+
+<!-- SECTION 1: QUESTION -->
+<div class="section" id="section1">
+  <div class="card">
+    <h1>Hey, My Love ❤️</h1>
+    <p>From the moment you came into my life, everything felt warmer and more beautiful.</p>
+    <p><span class="names">Anish</span> ➝ <span class="names">[Her Name]</span></p>
+    <h2 style="color:#e6396f;">Will you be my Valentine? 💖</h2>
+    <div class="btns">
+      <button class="yes" onclick="goToMemories()">Yes 💕</button>
+      <button class="no" onclick="moveNo()">No 🙈</button>
+    </div>
+  </div>
+</div>
+
+<!-- MEMORIES PAGE -->
+<div class="section hidden" id="memoriesPage">
+  <div class="card">
+    <h1>Yay!!! 💖 You said YES</h1>
+    <p>Now, let’s relive our special moments together…</p>
+    <p class="scroll-hint">⬇️ Scroll down to see our memories</p>
+    <button class="music-btn" onclick="playMusic()">▶ Play our song</button>
+
+    <h2>Our Little Memories 📸</h2>
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">➕ Our first silly moment</button>
+        <div class="acc-content">
+          <div class="meme">
+            <img src="meme1.jpg" alt="Memory 1">
+            <div class="caption">We didn’t know it then, but this was the start ❤️</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">➕ That inside joke only we get</button>
+        <div class="acc-content">
+          <div class="meme">
+            <img src="meme2.jpg" alt="Memory 2">
+            <div class="caption">Still makes me smile every time 😌</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">➕ One of my favorite days</button>
+        <div class="acc-content">
+          <div class="meme">
+            <img src="meme3.jpg" alt="Memory 3">
+            <div class="caption">I wish I could relive this moment forever</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="your-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const heartsContainer = document.querySelector('.hearts');
+
+  function createHeart() {
+    const heart = document.createElement('span');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 400);
+
+  function goToMemories() {
+    document.getElementById('section1').classList.add('hidden');
+    document.getElementById('memoriesPage').classList.remove('hidden');
+    document.getElementById('memoriesPage').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function moveNo() {
+    const btn = document.querySelector('.no');
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  function toggleAcc(btn) {
+    const content = btn.nextElementSibling;
+    const open = content.style.display === 'block';
+    document.querySelectorAll('.acc-content').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.acc-btn').forEach(b => b.innerHTML = b.innerHTML.replace('➖','➕'));
+    if (!open) {
+      content.style.display = 'block';
+      btn.innerHTML = btn.innerHTML.replace('➕','➖');
+    }
+  }
+
+  function playMusic() {
+    document.getElementById('bgMusic').play();
+  }
+</script>
+
+</body>
+</html>
